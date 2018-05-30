@@ -534,7 +534,7 @@ class Effmpeg(object):
         filename = Effmpeg.__get_extracted_filename(input_.path)
         _input_opts = Effmpeg._common_ffmpeg_args[:]
         _input_path = os.path.join(input_.path, filename)
-        _output_opts = '-y -c:v libx264 -vf fps="' + str(fps) + '" '
+        _output_opts = '-y -c:v libx264 -pix_fmt yuv420p -vf fps="' + str(fps) + '" '
         if mux_audio:
             _ref_vid_opts = '-c copy -map 0:0 -map 1:1'
             _output_opts = _ref_vid_opts + ' ' + _output_opts

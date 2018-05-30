@@ -14,5 +14,11 @@ process = script(arg)
 process.process()
 # clearn up allignment file 
 
+#%%
+from subprocess import call
+#%%
+#cmd =['python', 'tools.py', 'effmpeg', '-a gen-vid', '-i ./data/test_images/video_out', '-r ./data/test_images/input_trump_short.mp4','-o ./data/test_images/out_trump_short.mp4', '-fps 24','-m']
+#call(cmd)
+call(['python', 'tools.py', 'effmpeg', '-a','gen-vid', '-i', './data/test_images/video_out', '-r', './data/test_images/input_trump_short.mp4','-o', './data/test_images/out_trump_short.mp4', '-fps','-1','-m'])
 
-    
+
