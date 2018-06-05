@@ -19,12 +19,12 @@ frame_ranges=None
 
 gpus=1
 input_aligned_dir=None
-input_dir='/home/chengyu/Dev/face_swap/faceswap_test/data/test_images/video'
+input_dir='./data/test_images'
 mask_type='facehullandrect'
 match_histogram=True
-model_dir='/home/chengyu/Dev/face_swap/faceswap_test/data/models'
+model_dir='./data/models'
 nfilter=None
-output_dir='/home/chengyu/Dev/face_swap/faceswap_test/data/test_images/video_out'
+output_dir='./data/test_images/output'
 ref_threshold=0.6
 seamless_clone=True
 serializer='json'
