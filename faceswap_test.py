@@ -4,6 +4,7 @@ import sys
 from scripts.convert import Convert as script
 import arg as arg
 import os 
+import shutil
 from subprocess import call
 
 if sys.version_info[0] < 3:
@@ -69,6 +70,7 @@ def convert_video(input_video,extract_dir,output_video,model_dir):
     print('step 2: images converted')
     generate_video(processed_img_dir,input_video,output_video)
     print('video transform successed!')
+    shutil.rmtree(extract_dir)
 
 
 def train(images_A_dir, images_B_dir,extract_dir,model_dir):
