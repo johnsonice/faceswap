@@ -22,3 +22,12 @@ output_video = './data/test_images/trump_convert.mp4'
 #fs.process_images(input_dir,output_dir,model_dir,swap_model)
 
 #fs.convert_video(input_video,extract_dir,output_video,model_dir)
+
+#%%
+# training
+images_A_dir = './data/trump'
+images_B_dir = './data/cage'
+extract_dir = './data/extract'
+model_dir = './data/models'
+
+fs.train(images_A_dir,images_B_dir,extract_dir,model_dir)
