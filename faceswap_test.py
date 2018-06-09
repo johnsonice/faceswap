@@ -73,20 +73,20 @@ def convert_video(input_video,extract_dir,output_video,model_dir):
     shutil.rmtree(extract_dir)
 
 
-def train(images_A_dir, images_B_dir,extract_dir,model_dir):
+def train(images_A_dir, images_B_dir,extract_dir,model_dir,epochs=5000):
     # To convert image a:
     extract_dir_a = os.path.join(extract_dir, 'A')
     cmd_a = ['python', 'faceswap.py', 'extract', '-i', images_A_dir, '-o', extract_dir_a]
-    #status = call(cmd_a)
+    status = call(cmd_a)
     #python faceswap.py extract -i ~/faceswap/photo/trump -o ~/faceswap/data/trump
     # To convert image b:
     extract_dir_b = os.path.join(extract_dir, 'B')
     cmd_b = ['python', 'faceswap.py', 'extract', '-i', images_B_dir, '-o', extract_dir_b]
-    #status = call(cmd_b)
+    status = call(cmd_b)
     #python faceswap.py extract -i ~/faceswap/photo/cage -o ~/faceswap/data/cage
     
     ## starting training 
-    cmd = ['python', 'faceswap.py', 'train', '-A',extract_dir_a, '-B', extract_dir_b, '-m', model_dir]
+    cmd = ['python', 'faceswap.py', 'train', '-A',extract_dir_a, '-B', extract_dir_b, '-m', model_dir,'-ep',epochs]
     #python faceswap.py train -A ~/faceswap/data/trump -B ~/faceswap/data/cage -m ~/faceswap/models/
     
     status = call(cmd)
