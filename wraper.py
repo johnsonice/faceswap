@@ -60,7 +60,7 @@ def generate_video(input_dir,reference_video,output_video):
     status = call(cmd)
     print(status)
 
-def convert_video(input_video,extract_dir,output_video,model_dir,extract=True):
+def convert_video(input_video,extract_dir,output_video,model_dir,extract=True,swap_model=True):
     extract_img_dir = os.path.join(extract_dir,'extracted_imgs')
     processed_img_dir = os.path.join(extract_dir,'processed_imgs')
     
@@ -70,7 +70,7 @@ def convert_video(input_video,extract_dir,output_video,model_dir,extract=True):
     else:
         print('using existing extracted images')
         
-    process_images(extract_img_dir,processed_img_dir,model_dir)
+    process_images(extract_img_dir,processed_img_dir,model_dir,swap_model=swap_model)
     print('step 2: images converted')
     generate_video(processed_img_dir,input_video,output_video)
     print('video transform successed!')
@@ -80,11 +80,11 @@ def convert_video(input_video,extract_dir,output_video,model_dir,extract=True):
 def train(images_A_dir, images_B_dir,extract_dir,model_dir,epochs=20000,extract=True):
     # To convert image a:
     extract_dir_a = os.path.join(extract_dir, 'A')
-    cmd_a = ['python', 'faceswap.py', 'extract', '-i', images_A_dir, '-o', extract_dir_a]
+    cmd_a = ['python', 'faceswap.py', 'extract', '-i', images_A_dir, '-o', extract_dir_a,'-l','0.8']
     
     # To convert image b:
     extract_dir_b = os.path.join(extract_dir, 'B')
-    cmd_b = ['python', 'faceswap.py', 'extract', '-i', images_B_dir, '-o', extract_dir_b]
+    cmd_b = ['python', 'faceswap.py', 'extract', '-i', images_B_dir, '-o', extract_dir_b,'-l','0.8']
     
     ## starting training 
     cmd = ['python', 'faceswap.py', 'train', '-A',extract_dir_a, '-B', extract_dir_b, '-m', model_dir,'-ep', str(epochs),'-v','-w']
