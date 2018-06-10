@@ -60,7 +60,7 @@ def generate_video(input_dir,reference_video,output_video):
     status = call(cmd)
     print(status)
 
-def convert_video(input_video,extract_dir,output_video,model_dir,extract=True,swap_model=True):
+def convert_video(input_video,extract_dir,output_video,model_dir,extract=True,swap_model=False):
     extract_img_dir = os.path.join(extract_dir,'extracted_imgs')
     processed_img_dir = os.path.join(extract_dir,'processed_imgs')
     

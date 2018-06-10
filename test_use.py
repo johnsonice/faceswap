@@ -29,7 +29,7 @@ def run_video():
     model_dir = './data/models'
     
     ## convert using video
-    fs.convert_video(input_video,extract_dir,output_video,model_dir)
+    fs.convert_video(input_video,extract_dir,output_video,model_dir,extract=True,swap_model=False)
 
 #%%
 # training
@@ -69,5 +69,7 @@ def run_training_video():
 #%%
     
 # test run images 
-print('test, run images.')
-run_images()
+print('test, run trainings.')
+#run_training_video()
+#run_images()
+run_video()
